@@ -648,7 +648,9 @@ class RTMPSettingsJSONField(serializers.JSONField):
 
 
 BOT_RECORDING_SETTINGS_DEFAULT_VALUES = {
-    "format": RecordingFormats.MP4,
+    # Transcript-only by default so the deployment needs NO object storage (S3/R2).
+    # Opt into recordings per-bot by passing recording_settings.format = "mp4" or "mp3".
+    "format": RecordingFormats.NONE,
     "view": RecordingViews.SPEAKER_VIEW,
     "resolution": RecordingResolutions.HD_1080P,
     "record_chat_messages_when_paused": False,
